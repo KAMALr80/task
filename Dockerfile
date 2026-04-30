@@ -30,6 +30,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
 # Set working directory
 WORKDIR /var/www/html
 
+# Fix Apache MPM error (disable event, enable prefork)
+RUN a2dismod mpm_event && a2enmod mpm_prefork
+
 # Copy project files
 COPY . .
 

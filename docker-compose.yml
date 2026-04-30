@@ -8,22 +8,29 @@ services:
     image: workspace-app
     container_name: workspace-app
     restart: unless-stopped
-    tty: true
+    volumes:
+      - ./:/var/www
+    networks:
+      - workspace-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: workspace-nginx
+    restart: unless-stopped
     ports:
       - "8000:80"
     volumes:
-      - ./:/var/www/html
-      - ./storage:/var/www/html/storage
+      - ./:/var/www
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - workspace-network
     depends_on:
-      - db
+      - app
 
   db:
     image: mysql:8.0
     container_name: workspace-db
     restart: unless-stopped
-    tty: true
     ports:
       - "3306:3306"
     environment:

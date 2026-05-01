@@ -61,7 +61,7 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         if ($task->status === 'approved') {
-            return redirect()->route('tasks.index')->with('error', 'This task is approved and cannot be edited.');
+            return redirect()->route('tasks.index')->with('error', 'Approved tasks cannot be edited.');
         }
 
         if ($task->creator_id !== Auth::id() && Auth::user()->role !== 'admin') {

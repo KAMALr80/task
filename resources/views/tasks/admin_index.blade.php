@@ -1,22 +1,18 @@
 <x-app-layout>
-    <div class="dashboard-wrapper">
-        <x-sidebar />
-        
-        <main class="main-content">
-            <div class="content-header">
-                <div>
-                    <h1 class="page-title">Admin Task Hub</h1>
-                    <p class="page-subtitle">Verify, Approve, or Reject tasks across all projects</p>
-                </div>
-                <div class="header-actions">
-                    <a href="{{ route('tasks.export') }}" class="btn-outline">
-                        <svg style="width: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Export Report
-                    </a>
-                </div>
-            </div>
+    <x-slot name="header">
+        <div>
+            <h1 class="page-title">Admin Task Hub</h1>
+            <p class="page-subtitle">Verify, Approve, or Reject tasks across all projects</p>
+        </div>
+        <div class="header-actions">
+            <a href="{{ route('tasks.export') }}" class="btn-primary" style="background: var(--glass); border-color: var(--glass-border); color: var(--success);">
+                <svg style="width: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Export Report
+            </a>
+        </div>
+    </x-slot>
 
-            <div class="glass-card">
+    <div class="glass-card">
                 <table class="custom-table">
                     <thead>
                         <tr>
@@ -83,7 +79,5 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-        </main>
     </div>
 </x-app-layout>

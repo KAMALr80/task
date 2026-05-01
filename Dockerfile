@@ -47,8 +47,12 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev \
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
-# Expose port 80
+# Make start script executable
+RUN chmod +x /var/www/start.sh
+
+# Railway uses a dynamic port
+ENV PORT=80
 EXPOSE 80
 
-# Start Nginx and PHP-FPM
-CMD service nginx start && php-fpm
+# Execute start script
+CMD ["/var/www/start.sh"]

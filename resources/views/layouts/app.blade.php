@@ -46,22 +46,21 @@
                 --glow: rgba(99, 102, 241, 0.15) !important;
             }
             html.light {
-                --bg-color: #ffffff !important;
-                --card-bg: #f8fafc !important;
-                --text-color: #000000 !important;
-                --text-muted: #475569 !important;
+                --bg-color: #f1f5f9 !important;
+                --card-bg: #ffffff !important;
+                --text-color: #1e293b !important;
+                --text-muted: #64748b !important;
                 --sidebar-bg: #ffffff !important;
-                --glass: rgba(0, 0, 0, 0.05) !important;
-                --glass-border: rgba(0, 0, 0, 0.1) !important;
+                --glass: #ffffff !important;
+                --glass-border: #e2e8f0 !important;
                 --glow: none !important;
             }
 
             /* Direct UI Overrides */
             body, .dashboard-wrapper {
                 background-color: var(--bg-color) !important;
-                background-image: none !important; /* Force remove dark gradients */
+                background-image: none !important;
                 color: var(--text-color) !important;
-                transition: none !important; /* Instant switch for debugging */
             }
 
             .sidebar, .top-nav, .glass-card, table, tr, td, th {

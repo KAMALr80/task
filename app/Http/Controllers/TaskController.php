@@ -33,7 +33,7 @@ class TaskController extends Controller
             'project_id' => 'required|exists:projects,id',
             'assigned_to' => 'nullable|exists:users,id',
             'due_date' => 'required|date',
-            'status' => 'required|in:pending,completed,overdue',
+            'status' => 'required|in:pending,in-progress,submitted,on-hold,completed,overdue',
             'priority' => 'required|in:low,medium,high',
         ]);
 
@@ -60,6 +60,10 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
+        if ($task->status === 'approved') {
+            return redirect()->route('tasks.index')->with('error', 'This task is approved and cannot be edited.');
+        }
+
         if ($task->creator_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->route('tasks.index')->with('error', 'You are not authorized to edit this task.');
         }
@@ -71,6 +75,10 @@ class TaskController extends Controller
 
     public function update(Request $request, Task $task)
     {
+        if ($task->status === 'approved') {
+            return redirect()->route('tasks.index')->with('error', 'This task is approved and cannot be updated.');
+        }
+
         if ($task->creator_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->route('tasks.index')->with('error', 'You are not authorized to update this task.');
         }
@@ -81,7 +89,7 @@ class TaskController extends Controller
             'project_id' => 'required|exists:projects,id',
             'assigned_to' => 'nullable|exists:users,id',
             'due_date' => 'required|date',
-            'status' => 'required|in:pending,completed,overdue',
+            'status' => 'required|in:pending,in-progress,submitted,on-hold,completed,overdue',
             'priority' => 'required|in:low,medium,high',
         ]);
 
@@ -106,6 +114,10 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
+        if ($task->status === 'approved') {
+            return redirect()->route('tasks.index')->with('error', 'This task is approved and cannot be deleted.');
+        }
+
         if ($task->creator_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->route('tasks.index')->with('error', 'You are not authorized to delete this task.');
         }

@@ -3,7 +3,7 @@
         <div class="glass-card animate-fade" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 3.5rem;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 2rem;">
                 <div>
-                    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Edit Task</h2>
+                    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-color);">Edit Task</h2>
                     <p style="color: var(--text-muted); font-size: 1.1rem;">Update task details and assignments</p>
                 </div>
                 <a href="{{ route('tasks.index') }}" class="btn-primary" style="background: var(--glass); border: 1px solid var(--glass-border); padding: 0.75rem 1.5rem;">
@@ -64,6 +64,9 @@
                         <label for="status" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; display: block;">Status</label>
                         <select name="status" id="status" required style="width: 100%; padding: 1rem;">
                             <option value="pending" {{ $task->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="in-progress" {{ $task->status == 'in-progress' ? 'selected' : '' }}>In Progress</option>
+                            <option value="submitted" {{ $task->status == 'submitted' ? 'selected' : '' }}>Submitted</option>
+                            <option value="on-hold" {{ $task->status == 'on-hold' ? 'selected' : '' }}>On Hold</option>
                             <option value="completed" {{ $task->status == 'completed' ? 'selected' : '' }}>Completed</option>
                             <option value="overdue" {{ $task->status == 'overdue' ? 'selected' : '' }}>Overdue</option>
                         </select>

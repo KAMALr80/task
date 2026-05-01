@@ -1,22 +1,18 @@
 #!/bin/sh
 
-# Replace PORT
+# Set the port in nginx config
 sed -i "s/\${PORT}/${PORT}/g" /etc/nginx/http.d/default.conf
 
-# Laravel setup
-php artisan config:clear
-php artisan cache:clear
-php artisan route:clear
+# Laravel Optimizations
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
 
-# Generate key if missing
-php artisan key:generate || true
-
-# 🔥 IMPORTANT: run migrations
+# Run Migrations (Force for production)
 php artisan migrate --force
 
-# Cache config
-php artisan config:cache
-
-# Start services
+# Start PHP-FPM in background
 php-fpm -D
+
+# Start Nginx in foreground
 nginx -g "daemon off;"

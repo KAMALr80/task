@@ -59,18 +59,18 @@
             <div class="blob blob-3"></div>
         </div>
         <div class="hero-section">
-            <div class="glass-card" style="padding: 4rem; max-width: 900px;">
-                <h1 class="hero-title">Workspace Manager</h1>
+            <div class="glass-card animate-fade" style="padding: 5rem 4rem; max-width: 850px; border-radius: 3.5rem;">
+                <h1 class="hero-title" style="border: none; margin-bottom: 2rem;">Workspace Manager</h1>
                 <p class="hero-subtitle">
                     Experience the future of team collaboration. Manage projects, assign tasks, and track progress with our ultra-premium glassmorphic interface.
                 </p>
                 
-                <div class="cta-group">
+                <div class="cta-group" style="display: flex; align-items: center; justify-content: center; gap: 2rem;">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">Go to Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem; border-radius: 1.2rem;">Go to Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">Get Started</a>
-                        <a href="{{ route('register') }}" class="btn-outline" style="padding: 1rem 3rem; font-size: 1.1rem;">Register</a>
+                        <a href="{{ route('login') }}" class="btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem; border-radius: 1.2rem;">Get Started</a>
+                        <a href="{{ route('register') }}" class="btn-outline" style="padding: 1.2rem 4rem; font-size: 1.1rem; border-radius: 1.2rem; background: rgba(255,255,255,0.05);">Register Account</a>
                     @endauth
                 </div>
             </div>

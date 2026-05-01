@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev \
     libjpeg-dev \
-    libfreetype6-dev
+    libfreetype6-dev \
+    nginx
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -33,6 +34,10 @@ WORKDIR /var/www
 # Copy project files
 COPY . .
 
+# Copy Nginx config
+COPY nginx.conf /etc/nginx/sites-available/default
+RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
 # Install dependencies
 RUN composer install --no-interaction --optimize-autoloader --no-dev \
     && npm install \
@@ -42,6 +47,8 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev \
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
-EXPOSE 9000
+# Expose port 80
+EXPOSE 80
 
-CMD ["php-fpm"]
+# Start Nginx and PHP-FPM
+CMD service nginx start && php-fpm

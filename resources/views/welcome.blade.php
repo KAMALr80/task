@@ -52,7 +52,12 @@
             }
         </style>
     </head>
-    <body>
+    <body class="dark" style="background: #0f172a; color: white;">
+        <div class="bg-blobs">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
         <div class="hero-section">
             <div class="glass-card" style="padding: 4rem; max-width: 900px;">
                 <h1 class="hero-title">Workspace Manager</h1>

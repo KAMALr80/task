@@ -58,32 +58,33 @@ body {
 
 .blob {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     background: var(--primary);
-    filter: blur(100px);
+    filter: blur(120px);
     border-radius: 50%;
-    opacity: 0.15;
-    animation: move 25s infinite alternate;
+    opacity: 0.25;
+    animation: move 20s infinite alternate;
 }
 
-.blob-1 { top: -10%; left: -10%; background: var(--primary); }
-.blob-2 { bottom: -10%; right: -10%; background: var(--secondary); animation-delay: -5s; }
-.blob-3 { top: 40%; left: 30%; background: var(--primary); opacity: 0.1; animation-duration: 30s; }
+.blob-1 { top: -15%; left: -10%; background: var(--primary); }
+.blob-2 { bottom: -15%; right: -10%; background: var(--secondary); animation-delay: -7s; }
+.blob-3 { top: 30%; left: 40%; background: var(--primary); opacity: 0.15; animation-duration: 25s; }
 
 @keyframes move {
-    from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(100px, 50px) scale(1.1); }
+    from { transform: translate(-50px, -50px) scale(1); }
+    to { transform: translate(100px, 100px) scale(1.2); }
 }
 
 /* Glassmorphism Card */
 .glass-card {
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: 1.5rem;
-    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 2.5rem;
+    padding: 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

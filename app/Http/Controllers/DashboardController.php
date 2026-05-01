@@ -20,9 +20,11 @@ class DashboardController extends Controller
                 'total_projects' => Project::count(),
                 'total_tasks' => Task::count(),
                 'total_users' => \App\Models\User::count(),
-                'completed_tasks' => Task::where('status', 'completed')->count(),
-                'pending_tasks' => Task::where('status', 'pending')->count(),
-                'overdue_tasks' => Task::where('status', 'overdue')->count(),
+                'completed_tasks' => Task::where('status', 'approved')->count(),
+                'pending_tasks' => Task::whereNotIn('status', ['approved', 'completed'])->count(),
+                'overdue_tasks' => Task::where('status', '!=', 'approved')
+                                      ->where('due_date', '<', now()->toDateString())
+                                      ->count(),
             ];
             $recent_tasks = Task::with(['project', 'assignee'])->latest()->take(10)->get();
             $team_workload = \App\Models\User::withCount('tasks')->get();
@@ -32,9 +34,12 @@ class DashboardController extends Controller
                     $q->where('assigned_to', $user->id);
                 })->count(),
                 'total_tasks' => Task::where('assigned_to', $user->id)->count(),
-                'completed_tasks' => Task::where('assigned_to', $user->id)->where('status', 'completed')->count(),
-                'pending_tasks' => Task::where('assigned_to', $user->id)->where('status', 'pending')->count(),
-                'overdue_tasks' => Task::where('assigned_to', $user->id)->where('status', 'overdue')->count(),
+                'completed_tasks' => Task::where('assigned_to', $user->id)->where('status', 'approved')->count(),
+                'pending_tasks' => Task::where('assigned_to', $user->id)->whereNotIn('status', ['approved', 'completed'])->count(),
+                'overdue_tasks' => Task::where('assigned_to', $user->id)
+                                      ->where('status', '!=', 'approved')
+                                      ->where('due_date', '<', now()->toDateString())
+                                      ->count(),
             ];
             $recent_tasks = Task::where('assigned_to', $user->id)->with(['project'])->latest()->take(5)->get();
         }

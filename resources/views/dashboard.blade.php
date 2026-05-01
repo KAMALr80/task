@@ -36,7 +36,7 @@
         </div>
         @if(auth()->user()->isAdmin())
         <div class="glass-card animate-fade stagger-2">
-            <div class="stat-label">Total Team</div>
+            <div class="stat-label">Total Members</div>
             <div class="stat-val" style="color: #8b5cf6;">{{ $stats['total_users'] }}</div>
         </div>
         @endif

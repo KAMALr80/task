@@ -226,4 +226,36 @@ class TaskController extends Controller
 
         return response()->stream($callback, 200, $headers);
     }
+    public function adminIndex()
+    {
+        if (Auth::user()->role !== 'admin') {
+            return redirect()->route('dashboard')->with('error', 'Unauthorized access.');
+        }
+
+        $tasks = Task::with(['project', 'assignee', 'creator'])->latest()->get();
+        return view('tasks.admin_index', compact('tasks'));
+    }
+
+    public function adminUpdateStatus(Request $request, Task $task)
+    {
+        if (Auth::user()->role !== 'admin') {
+            return redirect()->back()->with('error', 'Unauthorized access.');
+        }
+
+        $request->validate([
+            'status' => 'required|in:approved,rejected,cancelled,pending',
+        ]);
+
+        $task->update(['status' => $request->status]);
+
+        ActivityLog::create([
+            'user_id' => Auth::id(),
+            'type' => 'task',
+            'activity' => 'admin_verification',
+            'description' => "Admin " . ucfirst($request->status) . " task: '{$task->title}'",
+            'subject_id' => $task->id
+        ]);
+
+        return redirect()->back()->with('success', "Task marked as " . ucfirst($request->status));
+    }
 }

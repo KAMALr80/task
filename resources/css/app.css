@@ -294,6 +294,12 @@ select {
     outline: none;
     transition: all 0.3s;
     font-family: inherit;
+    cursor: pointer;
+}
+
+select option {
+    background-color: #1e293b; /* Dark background for options */
+    color: #f8fafc; /* Light text for options */
 }
 
 input:focus,

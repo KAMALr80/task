@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/tasks/kanban', [TaskController::class, 'kanban'])->name('tasks.kanban');
     Route::get('/tasks/export', [TaskController::class, 'export'])->name('tasks.export');
+    Route::get('/admin/tasks', [TaskController::class, 'adminIndex'])->name('admin.tasks.index');
+    Route::patch('/admin/tasks/{task}/status', [TaskController::class, 'adminUpdateStatus'])->name('admin.tasks.status');
     Route::patch('/tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus');
     Route::post('/tasks/{task}/start-timer', [TaskController::class, 'startTimer'])->name('tasks.startTimer');
     Route::post('/tasks/{task}/stop-timer', [TaskController::class, 'stopTimer'])->name('tasks.stopTimer');

@@ -46,13 +46,13 @@
                 --glow: rgba(99, 102, 241, 0.15) !important;
             }
             html.light {
-                --bg-color: #f1f5f9 !important;
+                --bg-color: #f8fafc !important;
                 --card-bg: #ffffff !important;
-                --text-color: #1e293b !important;
+                --text-color: #0f172a !important;
                 --text-muted: #64748b !important;
                 --sidebar-bg: #ffffff !important;
-                --glass: #ffffff !important;
-                --glass-border: #e2e8f0 !important;
+                --glass: rgba(255, 255, 255, 0.7) !important;
+                --glass-border: #cbd5e1 !important;
                 --glow: none !important;
             }
 
@@ -63,11 +63,15 @@
                 color: var(--text-color) !important;
             }
 
-            .sidebar, .top-nav, .glass-card, table, tr, td, th {
+            .sidebar, .top-nav, .glass-card, table {
                 background-color: var(--card-bg) !important;
-                background-image: none !important;
                 color: var(--text-color) !important;
-                border-color: var(--glass-border) !important;
+                border: 1px solid var(--glass-border) !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+            }
+
+            html.dark .glass-card {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
             }
 
             .nav-link, .stat-label, .dropdown-item, .custom-table th, .custom-table td {
@@ -75,6 +79,11 @@
             }
 
             h1, h2, h3, h4, h5, h6, span, p, div {
+                color: var(--text-color) !important;
+            }
+            
+            /* Fix invisible text in light mode buttons */
+            html.light .btn-primary[style*="background: var(--glass)"] {
                 color: var(--text-color) !important;
             }
         </style>

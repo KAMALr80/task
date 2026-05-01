@@ -4,7 +4,8 @@
             <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Create Task</h1>
             <p style="color: var(--text-muted);">Assign a new task to a project and team member.</p>
         </div>
-        <a href="{{ route('tasks.index') }}" class="btn-primary" style="background: var(--glass); border: 1px solid var(--glass-border);">
+        <a href="{{ route('tasks.index') }}" class="btn-outline" style="padding: 0.75rem 1.5rem; border-radius: 1rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; border: 1px solid var(--glass-border); color: var(--text-color);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             Back to List
         </a>
     </x-slot>

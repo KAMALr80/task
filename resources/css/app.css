@@ -297,9 +297,14 @@ select {
     cursor: pointer;
 }
 
-select option {
-    background-color: #1e293b; /* Dark background for options */
-    color: #f8fafc; /* Light text for options */
+html.dark select option {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+
+html.light select option {
+    background-color: #ffffff;
+    color: #1e293b;
 }
 
 input:focus,

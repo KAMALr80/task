@@ -19,8 +19,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
             Tasks
         </a>
-        <a href="{{ route('tasks.kanban') }}" class="nav-link {{ request()->routeIs('tasks.kanban') ? 'active' : '' }}" style="margin-left: 1.5rem; font-size: 0.8rem; opacity: 0.8; border-left: 2px solid var(--glass-border); padding-left: 1rem; margin-top: -0.5rem; margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+        <a href="{{ route('tasks.kanban') }}" class="nav-link {{ request()->routeIs('tasks.kanban') ? 'active' : '' }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
             Kanban Board
         </a>
 

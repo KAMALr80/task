@@ -1,13 +1,4 @@
 <section>
-    <header style="margin-bottom: 2rem;">
-        <h2 style="font-size: 1.5rem; font-weight: 700; color: white;">
-            {{ __('Profile Information') }}
-        </h2>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            {{ __("Update your account's profile information and email address.") }}
-        </p>
-    </header>
-
     <form method="post" action="{{ route('profile.update') }}" style="display: grid; gap: 1.5rem;">
         @csrf
         @method('patch')

@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="animate-fade">
         <h2 class="auth-title">Welcome Back</h2>
-        <p class="auth-subtitle">Continue your journey with BBTL Task</p>
+        <p class="auth-subtitle">Continue your journey with Workspace</p>
     </div>
 
     <!-- Social Logins -->
@@ -28,7 +28,7 @@
         <div style="margin-bottom: 1.5rem;">
             <label for="email">Email Address</label>
             <div style="position: relative;">
-                <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="admin@bbtl.com">
+                <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="admin@task.com">
             </div>
             @error('email') <div class="input-error">{{ $message }}</div> @enderror
         </div>

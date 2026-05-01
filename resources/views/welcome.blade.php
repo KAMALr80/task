@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ config('app.name', 'BBTL Task') }}</title>
+        <title>{{ config('app.name', 'Workspace') }}</title>
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600,800&display=swap" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -55,7 +55,7 @@
     <body>
         <div class="hero-section">
             <div class="glass-card" style="padding: 4rem; max-width: 900px;">
-                <h1 class="hero-title">BBTL Task Manager</h1>
+                <h1 class="hero-title">Workspace Manager</h1>
                 <p class="hero-subtitle">
                     Experience the future of team collaboration. Manage projects, assign tasks, and track progress with our ultra-premium glassmorphic interface.
                 </p>

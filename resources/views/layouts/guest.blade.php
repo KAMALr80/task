@@ -24,7 +24,7 @@
         <div class="hero-section" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
             <div style="margin-bottom: 2rem;">
                 <a href="/" class="logo" style="font-size: 2rem;">
-                    BBTL Task
+                    Workspace
                 </a>
             </div>
 

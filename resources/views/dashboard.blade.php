@@ -134,104 +134,53 @@
         @endif
     </div>
 
-    <!-- Real-time Activity Feed -->
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; margin-top: 2.5rem;">
-        <div class="glass-card animate-fade stagger-2" style="padding: 2.5rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                <h3 style="font-size: 1.5rem; font-weight: 700;">Real-time Activity Feed</h3>
-                <span style="padding: 0.5rem 1rem; background: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 2rem; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
-                    LIVE UPDATES
-                </span>
+    <!-- Professional Activity Feed (Main Focus) -->
+    <div class="glass-card animate-fade stagger-2" style="padding: 2.5rem; margin-top: 2.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1.5rem;">
+            <div>
+                <h3 style="font-size: 1.75rem; font-weight: 800; display: flex; align-items: center; gap: 0.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    Real-time Activity Feed
+                </h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">Live updates from across your organization</p>
             </div>
-
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                @forelse($recent_activities as $activity)
-                <div style="display: flex; align-items: center; gap: 1.5rem; padding: 1.25rem; background: var(--glass); border-radius: 1.25rem; border: 1px solid var(--glass-border); transition: 0.3s;">
-                    <div style="width: 45px; height: 45px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; flex-shrink: 0;">
-                        {{ strtoupper(substr($activity->user->name, 0, 1)) }}
-                    </div>
-                    <div style="flex-grow: 1;">
-                        <div style="font-weight: 700; font-size: 1rem;">{{ $activity->description }}</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            {{ $activity->user->name }}
-                            <span style="opacity: 0.5;">&bull;</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            {{ $activity->created_at->diffForHumans() }}
-                        </div>
-                    </div>
-                    <div style="padding: 0.5rem 1rem; background: rgba(99, 102, 241, 0.1); color: var(--primary); border-radius: 12px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">
-                        {{ $activity->type }}
-                    </div>
-                </div>
-                @empty
-                <div style="text-align: center; padding: 3rem; color: var(--text-muted);">No activities logged yet.</div>
-                @endforelse
+            <div style="padding: 0.6rem 1.2rem; background: rgba(16, 185, 129, 0.08); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 2rem; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;">
+                <span style="width: 10px; height: 10px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; animation: pulse 2s infinite;"></span>
+                LIVE MONITORING
             </div>
         </div>
 
-        <div class="glass-card animate-fade stagger-3" style="padding: 2.5rem;">
-            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem;">Analytics</h3>
-            <div style="height: 250px; display: flex; align-items: center; justify-content: center;">
-                <canvas id="taskChart"></canvas>
-            </div>
-            <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="color: var(--text-muted); font-size: 0.9rem;">Team Efficiency</span>
-                    <span style="font-weight: 700; color: var(--success);">{{ $stats['total_tasks'] > 0 ? round(($stats['completed_tasks'] / $stats['total_tasks']) * 100) : 0 }}%</span>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;">
+            @forelse($recent_activities as $activity)
+            <div style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 1.5rem; border: 1px solid var(--glass-border); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: default;" onmouseover="this.style.transform='translateX(10px)'; this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='var(--primary)'" onmouseout="this.style.transform='translateX(0)'; this.style.background='rgba(255,255,255,0.02)'; this.style.borderColor='var(--glass-border)'">
+                <div style="width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; flex-shrink: 0; box-shadow: 0 8px 16px rgba(0,0,0,0.1);">
+                    {{ strtoupper(substr($activity->user->name, 0, 1)) }}
                 </div>
-                <div style="width: 100%; height: 6px; background: var(--glass); border-radius: 3px; overflow: hidden;">
-                    <div style="width: {{ $stats['total_tasks'] > 0 ? ($stats['completed_tasks'] / $stats['total_tasks']) * 100 : 0 }}%; height: 100%; background: var(--success);"></div>
+                <div style="flex-grow: 1;">
+                    <div style="font-weight: 800; font-size: 1.1rem; color: var(--text-color);">{{ $activity->description }}</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.75rem; margin-top: 0.4rem;">
+                        <span style="display: flex; align-items: center; gap: 0.4rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            {{ $activity->user->name }}
+                        </span>
+                        <span style="opacity: 0.3;">|</span>
+                        <span style="display: flex; align-items: center; gap: 0.4rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            {{ $activity->created_at->diffForHumans() }}
+                        </span>
+                    </div>
+                </div>
+                <div style="padding: 0.6rem 1.2rem; background: var(--glass); border: 1px solid var(--glass-border); color: var(--primary); border-radius: 12px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                    {{ $activity->type }}
                 </div>
             </div>
+            @empty
+            <div style="text-align: center; padding: 5rem; color: var(--text-muted); background: var(--glass); border-radius: 2rem; border: 1px dashed var(--glass-border);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1.5rem; opacity: 0.5;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div style="font-size: 1.1rem; font-weight: 600;">No activity found.</div>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Activities will appear here as team members interact with tasks.</p>
+            </div>
+            @endforelse
         </div>
     </div>
-
-    @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('taskChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: {!! json_encode($chart_data['labels']) !!},
-                    datasets: [{
-                        data: {!! json_encode($chart_data['counts']) !!},
-                        backgroundColor: [
-                            'rgba(245, 158, 11, 0.6)',
-                            'rgba(99, 102, 241, 0.6)',
-                            'rgba(16, 185, 129, 0.6)',
-                            'rgba(239, 68, 68, 0.6)'
-                        ],
-                        borderColor: [
-                            '#f59e0b',
-                            '#6366f1',
-                            '#10b981',
-                            '#ef4444'
-                        ],
-                        borderWidth: 2,
-                        hoverOffset: 15
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-color').trim(),
-                                padding: 20,
-                                font: { size: 12, weight: '600' }
-                            }
-                        }
-                    },
-                    cutout: '70%'
-                }
-            });
-        });
-    </script>
-    @endpush
 </x-app-layout>

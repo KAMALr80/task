@@ -82,9 +82,15 @@
                 color: var(--text-color) !important;
             }
             
-            /* Fix invisible text in light mode buttons */
+            /* Fix invisible text and faint borders in light mode buttons */
             html.light .btn-primary[style*="background: var(--glass)"] {
                 color: var(--text-color) !important;
+                border: 1.5px solid var(--glass-border) !important;
+                background: rgba(0, 0, 0, 0.02) !important;
+            }
+            html.light .btn-primary[style*="background: var(--glass)"]:hover {
+                background: rgba(0, 0, 0, 0.05) !important;
+                border-color: var(--primary) !important;
             }
         </style>
 

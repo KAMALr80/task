@@ -16,7 +16,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased dark" style="background: #0f172a; color: white; overflow-x: hidden;">
         <div class="bg-blobs">
             <div class="blob blob-1"></div>
             <div class="blob blob-2"></div>

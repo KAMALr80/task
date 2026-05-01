@@ -37,13 +37,43 @@
 
 body {
     background-color: var(--bg-color);
-    background-image: 
-        radial-gradient(at 0% 0%, var(--glow) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, var(--glow) 0px, transparent 50%);
     color: var(--text-color);
     min-height: 100vh;
     overflow-x: hidden;
     transition: background-color 0.4s ease, color 0.4s ease;
+    position: relative;
+}
+
+/* Background Blobs */
+.bg-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg-color);
+}
+
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: var(--primary);
+    filter: blur(100px);
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: move 25s infinite alternate;
+}
+
+.blob-1 { top: -10%; left: -10%; background: var(--primary); }
+.blob-2 { bottom: -10%; right: -10%; background: var(--secondary); animation-delay: -5s; }
+.blob-3 { top: 40%; left: 30%; background: var(--primary); opacity: 0.1; animation-duration: 30s; }
+
+@keyframes move {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(100px, 50px) scale(1.1); }
 }
 
 /* Glassmorphism Card */
